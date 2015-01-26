@@ -1,0 +1,31 @@
+#include "stdafx.h"
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main () {
+	srand (time(NULL));
+	int n, symbol, c, arr [20];
+	bool rnd=true;
+	n=rand()%5+15;
+	for (int i=0; i<n; i++) {
+		symbol=rand()%3;
+		if (symbol==0)
+			c=rand()%10+48;
+		if (symbol==1)
+			c=rand()%26+65;
+		if (symbol==2)
+			c=rand()%26+97;
+		arr[i]=c;
+	}
+	for (int i=0; i-1<n; i++)
+		if (((arr[i]>47)&&(arr[i]<91))&&((arr[i+1]>47)&&(arr[i+1]<91)))
+			arr[i+1]+=32;
+	setlocale (0, "");
+	for (int i=0; i<n; i++)
+		cout <<char(arr[i]);
+	cout <<endl;
+	system ("pause");
+	return 0;
+}
